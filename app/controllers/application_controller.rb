@@ -23,7 +23,6 @@ class ApplicationController < Sinatra::Base
       user = User.new(username: params[:username], password: params[:password])
       user.save
       session[:user_id] = user.id
-      binding.pry
       redirect to '/login'
     end
   end
@@ -39,6 +38,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/login" do
+    binding.pry
     user = User.find_by(:username => params[:username])
     binding.pry
     if user
